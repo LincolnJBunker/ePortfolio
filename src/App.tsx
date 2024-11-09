@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import { BrowserRouter } from 'react-router-dom'
-import './App.css'
+// import './App.css'
 import { AppRoutes } from './routes/routes'
-import AnchorTemporaryDrawer from './components/Drawer/Drawer'
+import NavigationBar from './components/Drawer/Drawer'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -10,8 +11,8 @@ function App() {
   return (
     <React.Fragment>
       <BrowserRouter>
+        <NavigationBar />
         <AppRoutes />
-        <AnchorTemporaryDrawer />
       </BrowserRouter>
     </React.Fragment>
   )

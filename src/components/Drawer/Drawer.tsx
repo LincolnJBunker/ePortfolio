@@ -1,86 +1,38 @@
-// import * as React from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Box, 
-        Drawer, 
-        CssBaseline, 
-        Toolbar, 
-        Divider, 
-        List, 
-        ListItem, 
-        ListItemButton,
-        Tooltip,
-        Button
-    } from '@mui/material';
+import { 
+  Container, 
+  Nav, 
+  Navbar,
+  NavDropdown,
+} from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
-const drawerWidth = 240;
-
-export default function PermanentDrawerLeft() {
-    const navigate = useNavigate();
+function NavigationBar() {
+  const navigate = useNavigate();
   return (
-    <Box sx={{ display: 'flex' }}>
-      <CssBaseline />
-      {/* <AppBar
-        position="fixed"
-        sx={{ width: `calc(100% - ${drawerWidth}px)`, ml: `${drawerWidth}px` }}
-      >
-        <Toolbar>
-          <Typography variant="h6" noWrap component="div">
-            Permanent drawer
-          </Typography>
-        </Toolbar>
-      </AppBar> */}
-      <Drawer
-        sx={{
-          width: drawerWidth,
-          flexShrink: 0,
-          '& .MuiDrawer-paper': {
-            width: drawerWidth,
-            boxSizing: 'border-box',
-          },
-        }}
-        variant="permanent"
-        anchor="left"
-      >
-        <Toolbar />
-        <Divider />
-        <List>
-            <ListItem>
-                <ListItemButton onClick={() => navigate('/')}>
-                    Home
-                </ListItemButton>
-            </ListItem>
-        </List>
-        <List>
-            <ListItem>
-                <ListItemButton onClick={() => navigate('/about')}>
-                    About Me
-                </ListItemButton>
-            </ListItem>
-        </List>
-        <Divider />
-        <List>
-            <ListItem>
-                <Tooltip
-                    title={
-                        <Box>
-                            <Button></Button>
-                        </Box>
-                    }
-                >
-                    <>
-                    math
-                    
-                    </>
-                </Tooltip>
-            </ListItem>
-        </List>
-      </Drawer>
-      <Box
-        component="main"
-        sx={{ flexGrow: 1, bgcolor: 'background.default', p: 3 }}
-      >
-        <Toolbar />
-      </Box>
-    </Box>
+    <Navbar expand="lg" className="bg-body-tertiary">
+      <Container>
+        <Navbar.Brand href="#home">Lincoln Bunker</Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="me-auto">
+            <Nav.Link onClick={() => navigate('/')}>Home</Nav.Link>
+            <Nav.Link onClick={() => navigate('/contact')}>Contact Me</Nav.Link>
+            <NavDropdown title="Projects" id="basic-nav-dropdown">
+              {/* <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item> */}
+              <NavDropdown.Item onClick={() => navigate('/projects/alpine-twin-peak-maintenance')}>
+                Alpine Twin Peak Maintenance
+              </NavDropdown.Item>
+              <NavDropdown.Item onClick={() => navigate('/projects/national-parks')}>National Parks</NavDropdown.Item>
+              {/* <NavDropdown.Divider /> */}
+              <NavDropdown.Item onClick={() => navigate('/projects/diet-bank')}>
+                Diet Bank
+              </NavDropdown.Item>
+            </NavDropdown>
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
   );
 }
+
+export default NavigationBar;
