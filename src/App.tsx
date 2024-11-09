@@ -10,7 +10,7 @@ function App() {
   return (
     <React.Fragment>
       <BrowserRouter>
-        {/* <AppRoutes /> */}
+        <AppRoutes />
         <AnchorTemporaryDrawer />
       </BrowserRouter>
     </React.Fragment>
